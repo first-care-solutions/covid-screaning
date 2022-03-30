@@ -1,0 +1,7 @@
+{
+  "name": "covid-screaning",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
