@@ -19,12 +19,6 @@ const routes: Routes = [
   redirectTo: 'pages/LandingPage',
   pathMatch: 'full'
 },
-   
-{ 
-  path: '/', 
-  redirectTo: 'pages/virtual-room',
-  pathMatch: 'full'
-},
 { 
   path: '/virtual-room', 
   redirectTo: 'pages/virtual-room',
