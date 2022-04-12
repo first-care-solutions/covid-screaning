@@ -19,10 +19,27 @@ const routes: Routes = [
   redirectTo: 'pages/LandingPage',
   pathMatch: 'full'
 },
-   {
-        path: '**',
-        redirectTo: ''
-					},
+   
+{ 
+  path: '/', 
+  redirectTo: 'pages/virtual-room',
+  pathMatch: 'full'
+},
+{ 
+  path: '/virtual-room', 
+  redirectTo: 'pages/virtual-room',
+  pathMatch: 'full'
+},
+{ 
+  path: 'pages/virtual-room', 
+  redirectTo: 'pages/virtual-room',
+  pathMatch: 'full'
+},
+{
+  path: '**',
+  redirectTo: ''
+    },
+            
 ];
 
 @NgModule({
