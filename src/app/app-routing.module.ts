@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { LandingPageComponent } from './pages/landing-page/landing-page.component';
+import { VirtualRoomComponent } from './pages/virtual-room/virtual-room.component';
 
 
 
@@ -12,17 +14,32 @@ const routes: Routes = [
    { 
     path: 'home', 
     redirectTo: 'pages/LandingPage',
+    component: LandingPageComponent,
     pathMatch: 'full'
  },
  { 
   path: 'pages/landing', 
   redirectTo: 'pages/LandingPage',
+  component: LandingPageComponent,
   pathMatch: 'full'
 },
-   {
-        path: '**',
-        redirectTo: ''
-					},
+{ 
+  path: '/virtual-room', 
+  redirectTo: 'pages/virtual-room',
+  component: VirtualRoomComponent,
+  pathMatch: 'full'
+},
+{ 
+  path: 'pages/virtual-room',
+  redirectTo: 'pages/virtual-room',
+  component: VirtualRoomComponent,
+  pathMatch: 'full'
+},
+{
+  path: '**',
+  redirectTo: ''
+    },
+            
 ];
 
 @NgModule({
