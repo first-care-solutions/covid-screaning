@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from "@angular/forms";
 import { Validators } from "@angular/forms";
+import { NgModule } from '@angular/core';
+import { Scroll } from '@angular/router';
 
 @Component({
   selector: 'app-landing-page',
@@ -18,13 +20,14 @@ export class LandingPageComponent implements OnInit {
   ngOnInit() {
     this.ionicForm = this.formBuilder.group({
       title: [],
-      initial:['', [Validators.required, Validators.minLength(1)]],
-      name: ['', [Validators.required, Validators.minLength(2)]],
+      initials:['', [Validators.required, Validators.minLength(1)]],
+      firstName: ['', [Validators.required, Validators.minLength(2)]],
       surname: ['', [Validators.required, Validators.minLength(2)]],
       idType:[],
-      dob: [this.defaultDate],
-      email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],  
-      mobile: ['', [Validators.required, Validators.pattern('^[0-9]+$')]]
+      idNumber: ['', [Validators.required, Validators.minLength(5)]],
+      dateOfBirth: [this.defaultDate],
+      email: ['', [, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],  
+      cellNumber: ['', [Validators.required, Validators.pattern('^[0-9]+$')]]
     })
   }
   getDate(event) {
