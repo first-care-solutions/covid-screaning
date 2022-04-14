@@ -1,3 +1,206 @@
-<p>
-  landing-page works!
-</p>
+<ion-card>
+  <ion-card-header>
+    User form
+  </ion-card-header>
+  <ion-card-content>
+      <form [formGroup]="ionicForm" (ngSubmit)="submitForm()" novalidate>
+       
+       
+          <ion-item lines="full">
+          <ion-list>
+            <ion-radio-group value="title">
+              <ion-list-header>
+                <ion-label>Title</ion-label>
+              </ion-list-header>
+          
+              <ion-row radio-group>
+              <ion-col>
+                <ion-item>
+                  <ion-label>MR</ion-label>
+                  <ion-radio value="mr"></ion-radio>
+                </ion-item>
+              </ion-col>
+              
+
+              <ion-col>
+                <ion-item>
+                  <ion-label>MRS</ion-label>
+                  <ion-radio value="mrs"></ion-radio>
+                </ion-item>
+              </ion-col>
+              
+          
+              <ion-col>
+                <ion-item>
+                  <ion-label>MS</ion-label>
+                  <ion-radio value="ms"></ion-radio>
+                </ion-item>
+              </ion-col>
+              
+
+              <ion-col>
+                <ion-item>
+                  <ion-label>MISS</ion-label>
+                  <ion-radio value="miss"></ion-radio>
+                </ion-item>
+              </ion-col>
+             
+
+              <ion-col>
+                <ion-item>
+                  <ion-label>MASTER</ion-label>
+                  <ion-radio value="master"></ion-radio>
+                </ion-item>
+              </ion-col>
+              
+
+              <ion-col>
+                <ion-item>
+                  <ion-label>DR</ion-label>
+                  <ion-radio value="dr"></ion-radio>
+                </ion-item>
+              </ion-col>
+              
+
+              <ion-col>
+                <ion-item>
+                  <ion-label>PROF</ion-label>
+                  <ion-radio value="prof"></ion-radio>
+                </ion-item>
+              </ion-col>
+              
+
+              <ion-col>
+                <ion-item>
+                  <ion-label>REV</ion-label>
+                  <ion-radio value="rev"></ion-radio>
+                </ion-item>
+              </ion-col>
+              
+
+              <ion-col>
+                <ion-item>
+                <ion-label>DS</ion-label>
+                <ion-radio value="ds"></ion-radio>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+              
+
+
+            </ion-radio-group>
+          </ion-list>
+        </ion-item>
+       
+         <!-- Error messages -->
+
+         <ion-item lines="full">
+          <ion-label position="floating">Initials</ion-label>
+          <ion-input formControlName="initial" type="text" required></ion-input>
+        </ion-item>
+         <!-- Error messages -->
+
+        <ion-item lines="full">
+          <ion-label position="floating">Fist Name(s)</ion-label>
+          <ion-input formControlName="name" type="text" required></ion-input>
+        </ion-item>
+         <!-- Error messages -->
+         <span class="error ion-padding" *ngIf="isSubmitted && errorControl['name'].errors?.['required']">
+          Name is required.
+        </span>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl['name'].errors?.['minlength']">
+          Name should be min 2 chars long.
+        </span>
+
+         <ion-item lines="full">
+          <ion-label position="floating">Surname</ion-label>
+          <ion-input formControlName="surname" type="text" required></ion-input>
+        </ion-item>
+         <!-- Error messages -->
+         <span class="error ion-padding" *ngIf="isSubmitted && errorControl['surname'].errors?.['required']">
+          Name is required.
+        </span>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl['surname'].errors?.['minlength']">
+          Name should be min 2 chars long.
+        </span>
+
+         <ion-item lines="full">
+          <ion-list>
+            <ion-radio-group value="idType">
+              <ion-list-header>
+                <ion-label>IdTypes</ion-label>
+              </ion-list-header>
+          
+              <ion-row radio-group>
+                <ion-col>
+                  <ion-item>
+                    <ion-label>0=RSA</ion-label>
+                    <ion-radio slot="start" value="0"></ion-radio>
+                  </ion-item>
+                </ion-col>
+              
+          
+              <ion-col>
+                <ion-item>
+                  <ion-label>1=Passport</ion-label>
+                  <ion-radio slot="start" value="1"></ion-radio>
+                </ion-item>
+              </ion-col>
+              
+          
+              <ion-col>
+                <ion-item>
+                  <ion-label>2=DOB/Other</ion-label>
+                  <ion-radio slot="start" value="2"></ion-radio>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+              
+            </ion-radio-group>
+          </ion-list>
+        </ion-item>
+
+        <ion-item lines="full">
+          <ion-label position="floating">Identification Number</ion-label>
+          <ion-input formControlName="id" type="text" required></ion-input>
+        </ion-item>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl['id'].errors?.['required']">
+          Name is required.
+        </span>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl['id'].errors?.['minlength']">
+          Name should be min 2 chars long.
+        </span>
+
+        <ion-item lines="full">
+          <ion-label position="floating">Date of Birth</ion-label>
+          <ion-datetime (ionChange)="getDate($event)" formControlName="dob" [value]="defaultDate"></ion-datetime>
+        </ion-item>
+
+        <ion-item lines="full">
+          <ion-label position="floating">Cell Number</ion-label>
+          <ion-input formControlName="mobile" type="text" required></ion-input>
+        </ion-item>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl['mobile'].errors?.['required']">
+          Mobile number is required.
+        </span>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl['mobile'].errors?.['pattern']">
+          Only numerical values allowed.
+        </span>
+
+        <ion-item lines="full">
+          <ion-label position="floating">Email</ion-label>
+          <ion-input formControlName="email" type="email" required></ion-input>
+        </ion-item>
+        
+
+        <ion-row>
+          <ion-col>
+            <ion-button type="submit" color="danger" expand="block">Submit</ion-button>
+          </ion-col>
+        </ion-row>
+      </form>
+    
+
+
+  </ion-card-content>
+</ion-card>
