@@ -7,7 +7,7 @@
 <ion-list>
   <form [formGroup]="ionicForm" (ngSubmit)="submitForm()" novalidate>
     <ion-item lines="full">
-      <ion-radio-group value="title">
+      <ion-radio-group formControlName="title">
         <ion-list-header>
           <ion-label>Title</ion-label>
         </ion-list-header>
@@ -61,50 +61,48 @@
       </ion-radio-group>
     </ion-item>
 
-    <!-- Error messages -->
-
     <ion-item lines="full">
       <ion-label position="floating">Initials</ion-label>
       <ion-input formControlName="initials" type="text" required></ion-input>
+      <span class="error-message" *ngIf="isSubmitted && errorControl['initials'].errors?.['required']"> Initial(s) is/are required. </span>
     </ion-item>
-    <!-- Error messages -->
 
     <ion-item lines="full">
       <ion-label position="floating">Fist Name(s)</ion-label>
       <ion-input formControlName="firstName" type="text" required></ion-input>
+      <span class="error-message" *ngIf="isSubmitted && errorControl['firstName'].errors?.['required']"> FirstName(s) is/are required. </span>
+      <span class="error-message" *ngIf="isSubmitted && errorControl['firstName'].errors?.['minlength']">
+        firstName should be min 2 chars long.
+      </span>
     </ion-item>
-    <!-- Error messages -->
-    <span class="error ion-padding" *ngIf="isSubmitted && errorControl['name'].errors?.['required']"> Name is required. </span>
-    <span class="error ion-padding" *ngIf="isSubmitted && errorControl['name'].errors?.['minlength']"> Name should be min 2 chars long. </span>
 
     <ion-item lines="full">
       <ion-label position="floating">Surname</ion-label>
       <ion-input formControlName="surname" type="text" required></ion-input>
+      <span class="error-message" *ngIf="isSubmitted && errorControl['surname'].errors?.['required']"> Surname is required. </span>
+      <span class="error-message" *ngIf="isSubmitted && errorControl['surname'].errors?.['minlength']"> Surname should be min 2 chars long. </span>
     </ion-item>
-    <!-- Error messages -->
-    <span class="error ion-padding" *ngIf="isSubmitted && errorControl['surname'].errors?.['required']"> Name is required. </span>
-    <span class="error ion-padding" *ngIf="isSubmitted && errorControl['surname'].errors?.['minlength']"> Name should be min 2 chars long. </span>
 
     <ion-item lines="full">
       <ion-list>
-        <ion-radio-group value="idType">
+        <ion-radio-group formControlName="idType">
           <ion-list-header>
             <ion-label>IdTypes</ion-label>
           </ion-list-header>
 
           <ion-row radio-group>
             <ion-col>
-              <ion-label>0=RSA</ion-label>
+              <ion-label>RSA</ion-label>
               <ion-radio value="0"></ion-radio>
             </ion-col>
 
             <ion-col>
-              <ion-label>1=Passport</ion-label>
+              <ion-label>Passport</ion-label>
               <ion-radio value="1"></ion-radio>
             </ion-col>
 
             <ion-col>
-              <ion-label>2=DOB/Other</ion-label>
+              <ion-label>DOB/Other</ion-label>
               <ion-radio value="2"></ion-radio>
             </ion-col>
           </ion-row>
@@ -115,9 +113,11 @@
     <ion-item lines="full">
       <ion-label position="floating">Identification Number</ion-label>
       <ion-input formControlName="idNumber" type="text" required></ion-input>
+      <span class="error ion-padding" *ngIf="isSubmitted && errorControl['idNumber'].errors?.['required']"> IdNumber is required. </span>
+      <span class="error ion-padding" *ngIf="isSubmitted && errorControl['idNumber'].errors?.['minlength']">
+        IdNumber should be min 2 chars long.
+      </span>
     </ion-item>
-    <span class="error ion-padding" *ngIf="isSubmitted && errorControl['id'].errors?.['required']"> Name is required. </span>
-    <span class="error ion-padding" *ngIf="isSubmitted && errorControl['id'].errors?.['minlength']"> Name should be min 2 chars long. </span>
 
     <ion-item>
       <ion-label>Pick date</ion-label>
@@ -131,10 +131,10 @@
 
     <ion-item lines="full">
       <ion-label position="floating">Cell Number</ion-label>
-      <ion-input formControlName="cellNumber" type="text" required></ion-input>
+      <ion-input formControlName="cellNumber" type="number" required></ion-input>
+      <span class="error ion-padding" *ngIf="isSubmitted && errorControl['cellNumber'].errors?.['required']"> CellNumber is required. </span>
+      <span class="error ion-padding" *ngIf="isSubmitted && errorControl['cellNumber'].errors?.['pattern']"> Only numerical values allowed. </span>
     </ion-item>
-    <span class="error ion-padding" *ngIf="isSubmitted && errorControl['mobile'].errors?.['required']"> Mobile number is required. </span>
-    <span class="error ion-padding" *ngIf="isSubmitted && errorControl['mobile'].errors?.['pattern']"> Only numerical values allowed. </span>
 
     <ion-item lines="full">
       <ion-label position="floating">Email</ion-label>
