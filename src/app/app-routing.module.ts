@@ -3,38 +3,31 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import { VirtualRoomComponent } from './pages/virtual-room/virtual-room.component';
 
-
-
 const routes: Routes = [
-  { 
-      path: '', 
-      component: LandingPageComponent,
-      pathMatch: 'full'
-   },
-   { 
+  {
+    path: '',
+    component: LandingPageComponent,
+  },
+  {
     path: 'home',
-    component: LandingPageComponent
- },
- { 
-  path: 'pages/landing-page', 
-  component: LandingPageComponent,
-  pathMatch: 'full'
-},
-{ 
-  path: 'virtual-room', 
-  component: VirtualRoomComponent,
-  pathMatch: 'full'
-},
-{ 
-  path: 'pages/virtual-room',
-  component: VirtualRoomComponent,
-  pathMatch: 'full'
-},
-{
-  path: '**',
-  redirectTo: ''
-    },
-            
+    component: LandingPageComponent,
+  },
+  {
+    path: 'pages/landing-page',
+    component: LandingPageComponent,
+  },
+  {
+    path: 'virtual-room',
+    component: VirtualRoomComponent,
+  },
+  {
+    path: 'pages/virtual-room',
+    component: VirtualRoomComponent,
+  },
+  {
+    path: '**',
+    redirectTo: '',
+  },
 ];
 
 @NgModule({
