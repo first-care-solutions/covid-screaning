@@ -4,7 +4,7 @@ import { RouteReuseStrategy } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
-import { IonicModule, IonicRouteStrategy, IonVirtualScroll } from '@ionic/angular';
+import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';

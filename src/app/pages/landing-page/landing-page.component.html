@@ -61,30 +61,36 @@
             </ion-row>
           </ion-grid>
         </ion-radio-group>
-        <span class="error-message" *ngIf="isSubmitted && errorControl['title'].errors?.['required']"> Title is required. </span>
+        <span class="error-message" *ngIf=" ionicForm.get('title')?.touched && errorControl['title'].errors?.['required']"> Title is required. </span>
       </ion-item>
 
       <ion-item lines="full">
         <ion-label position="floating">Initials</ion-label>
         <ion-input formControlName="initials" type="text" required></ion-input>
-        <span class="error-message" *ngIf="isSubmitted && errorControl['initials'].errors?.['required']"> Initial(s) is/are required. </span>
+        <span class="error-message" *ngIf=" ionicForm.get('initials')?.touched && errorControl['initials'].errors?.['required']">
+          Initial(s) is/are required.
+        </span>
       </ion-item>
 
       <ion-item lines="full">
         <ion-label position="floating">Fist Name(s)</ion-label>
         <ion-input formControlName="firstName" type="text" required></ion-input>
-        <span class="error-message" *ngIf="isSubmitted && errorControl['firstName'].errors?.['required']"> Fist Name(s) is/are required. </span>
-        <span class="error-message" *ngIf="isSubmitted && errorControl['firstName'].errors?.['minlength'] ">
-          IdNumber should be min 2 chars long.
+        <span class="error-message" *ngIf=" ionicForm.get('firstName')?.touched && errorControl['firstName'].errors?.['required']">
+          Fist Name(s) is/are required.
+        </span>
+        <span class="error-message" *ngIf=" ionicForm.get('firstName')?.touched && errorControl['firstName'].errors?.['minlength'] ">
+          Fist Name should be min 2 chars long.
         </span>
       </ion-item>
 
       <ion-item lines="full">
         <ion-label position="floating">Surname</ion-label>
         <ion-input formControlName="surname" type="text" required></ion-input>
-        <span class="error-message" *ngIf="isSubmitted && errorControl['surname'].errors?.['required']"> Surname is required. </span>
-        <span class="error-message" *ngIf="isSubmitted && errorControl['surname'].errors?.['minlength'] ">
-          IdNumber should be min 2 chars long.
+        <span class="error-message" *ngIf=" ionicForm.get('surname')?.touched && errorControl['surname'].errors?.['required']">
+          Surname is required.
+        </span>
+        <span class="error-message" *ngIf=" ionicForm.get('surname')?.touched && errorControl['surname'].errors?.['minlength'] ">
+          Surname should be min 2 chars long.
         </span>
       </ion-item>
 
@@ -115,15 +121,21 @@
             </ion-grid>
           </ion-radio-group>
         </ion-list>
-        <span class="error-message" *ngIf="isSubmitted && errorControl['idType'].errors?.['required']"> idType is required. </span>
+        <span class="error-message" *ngIf=" ionicForm.get('idType')?.touched && errorControl['idType'].errors?.['required']">
+          IdType is required.
+        </span>
       </ion-item>
 
       <ion-item lines="full">
         <ion-label position="floating">Identification Number</ion-label>
         <ion-input formControlName="idNumber" type="text" required></ion-input>
-        <span class="error-message" *ngIf="isSubmitted && errorControl['idNumber'].errors?.['required']"> Identification Number is required. </span>
-        <span class="error-message" *ngIf="isSubmitted && errorControl['idNumber'].errors?.['minlength']">
-          IdNumber should be min 10 chars long.
+        <span class="error-message" *ngIf=" ionicForm.get('idNumber')?.touched && errorControl['idNumber'].errors?.['required']">
+          Identification Number is required.
+        </span>
+        <span
+          class="error-message"
+          *ngIf="errorControl['idNumber'].errors?.['minlength'] || ionicForm.get('idNumber')?.dirty  && ionicForm.get('idNumber')?.touched && errorControl['idNumber'].errors?.['minlength']">
+          Identification Number should be min 10 chars long.
         </span>
       </ion-item>
 
@@ -140,8 +152,12 @@
       <ion-item lines="full">
         <ion-label position="floating">Cell Number</ion-label>
         <ion-input formControlName="cellNumber" type="text" required></ion-input>
-        <span class="error-message" *ngIf="isSubmitted && errorControl['cellNumber'].errors?.['required']"> Cell Number is required. </span>
-        <span class="error-message" *ngIf="isSubmitted && errorControl['cellNumber'].errors?.['minlength'] ">
+        <span class="error-message" *ngIf=" ionicForm.get('cellNumber')?.touched && errorControl['cellNumber'].errors?.['required']">
+          Cell Number is required.
+        </span>
+        <span
+          class="error-message"
+          *ngIf=" ionicForm.get('cellNumber')?.dirty  && ionicForm.get('cellNumber')?.touched && errorControl['cellNumber'].errors?.['minlength'] ">
           Cell Number should be min 10 chars long.
         </span>
       </ion-item>
@@ -153,24 +169,12 @@
 
       <ion-row>
         <ion-col>
-          <ion-button expand="round" type="submit" color="danger" expand="block">Submit</ion-button>
+          <ion-button expand="round" type="submit" [disabled]="!ionicForm.valid" color="danger" expand="block">Submit</ion-button>
         </ion-col>
         <ion-col>
           <!-- <ion-button class="button button-block button-light" type="reset" color="danger" expand="block" clearInput>Reset Form</ion-button>-->
         </ion-col>
       </ion-row>
-
-      <!--<script type="text/ng-template" id="modal.html">
-        <div class="modal">
-          <ion-header-bar>
-            <h1 class="title">Hi, I'm modal</h1>
-          </ion-header-bar>
-          <ion-content>
-          <button class="button" ng-click="closeWithoutRemove()">Close</button>
-          <button class="button" ng-click="closeWithRemove()">Close and remove</button>
-          </ion-content>
-        </div>
-      </script>-->
     </form>
   </ion-list>
 </ion-content>

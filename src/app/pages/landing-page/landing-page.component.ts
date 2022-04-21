@@ -63,24 +63,15 @@ export class LandingPageComponent implements OnInit {
   }
 
   /*
-  async openModal() {
-
-    // create the modal window
+  
+  async presentModal() {
     const modal = await this.modalController.create({
       component: ModalPage,
-      componentProps: { ticketholders: listProps },
+      cssClass: 'my-custom-class',
     });
-    // handle the return data when the modal window closes
-    modal.onDidDismiss().then((dataReturned) => {
-      console.log(dataReturned);
-      if (dataReturned.data !== 'Cancel') {
-        this.dataReturned = `You selected transactionID ${dataReturned.data}`;
-      }
-      else {
-        this.dataReturned = 'User cancelled the modal page.';
-      }
-    });
-
+    return await modal.present();
+  }
+}
   async closeModal() {
     await this.modalController.dismiss('Cancel');
   }
