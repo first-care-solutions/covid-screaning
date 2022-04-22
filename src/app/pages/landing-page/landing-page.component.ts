@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { Validators, FormBuilder, FormGroup, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
@@ -39,12 +39,8 @@ export class LandingPageComponent implements OnInit {
       cellNumber: ['', [Validators.required, Validators.minLength(9)]],
     });
   }
-  getDate(event) {
-    let date = new Date(event.target.value).toISOString().substring(0, 10);
-    this.ionicForm.get('dob')?.setValue('...');
-  }
 
-  get errorControl() {
+  get controls(): { [key: string]: AbstractControl } {
     return this.ionicForm.controls;
   }
 
@@ -58,25 +54,5 @@ export class LandingPageComponent implements OnInit {
       this.router.navigate(['/pages/virtual-room']);
       return true;
     }
-
-    this.ionicForm.reset();
   }
-
-  /*
-  
-  async presentModal() {
-    const modal = await this.modalController.create({
-      component: ModalPage,
-      cssClass: 'my-custom-class',
-    });
-    return await modal.present();
-  }
-}
-  async closeModal() {
-    await this.modalController.dismiss('Cancel');
-  }
-
-  async resetModal() {
-    await this.modalController.dismiss('Reset');
-  }*/
 }
