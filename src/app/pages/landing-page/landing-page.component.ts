@@ -11,18 +11,7 @@ import { ModalController } from '@ionic/angular';
 })
 export class LandingPageComponent implements OnInit {
   ionicForm: FormGroup;
-  defaultDate = '1987-06-30';
-  isSubmitted = false;
-
-  async openToast() {
-    const toast = await this.toastCtrl.create({
-      message: 'Please provide all the required values!',
-    });
-    toast.present();
-    toast.onDidDismiss().then((val) => {
-      console.log('Toast Dismissed');
-    });
-  }
+  emailPattern = '^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$';
 
   constructor(public formBuilder: FormBuilder, public toastCtrl: ToastController, public modalController: ModalController, private router: Router) {}
 
@@ -33,10 +22,10 @@ export class LandingPageComponent implements OnInit {
       firstName: ['', [Validators.required, Validators.minLength(2)]],
       surname: ['', [Validators.required, Validators.minLength(2)]],
       idType: ['', [Validators.required]],
-      idNumber: ['', [Validators.required, Validators.minLength(9)]],
-      dateOfBirth: [this.defaultDate],
-      email: ['', [, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$')]],
-      cellNumber: ['', [Validators.required, Validators.minLength(9)]],
+      idNumber: ['', [Validators.required, Validators.minLength(13)]],
+      dateOfBirth: [Validators.required],
+      email: ['', [Validators.pattern(this.emailPattern)]],
+      cellNumber: ['', [Validators.required, Validators.minLength(10)]],
     });
   }
 
@@ -45,7 +34,6 @@ export class LandingPageComponent implements OnInit {
   }
 
   submitForm() {
-    this.isSubmitted = true;
     if (!this.ionicForm.valid) {
       console.log('Please provide all the required values!');
       return false;
