@@ -5,70 +5,53 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <form [formGroup]="ionicForm" (ngSubmit)="submitForm()" novalidate>
-      <ion-item lines="full">
-        <ion-radio-group formControlName="title">
-          <ion-list-header>
-            <ion-label>Title</ion-label>
-          </ion-list-header>
+  <ion-card>
+    <form [formGroup]="ionicForm" (ngSubmit)="submitForm()">
+      <ion-title position="floating">Title</ion-title>
+      <ion-item>
+        <ion-segment formControlName="title" scrollable="true">
+          <ion-segment-button value="MR">
+            <ion-label>MR</ion-label>
+          </ion-segment-button>
 
-          <ion-grid>
-            <ion-row>
-              <ion-col>
-                <ion-label>MR</ion-label>
-                <ion-radio value="mr"></ion-radio>
-              </ion-col>
+          <ion-segment-button value="MRS">
+            <ion-label>MRS</ion-label>
+          </ion-segment-button>
 
-              <ion-col>
-                <ion-label>MRS</ion-label>
-                <ion-radio value="mrs"></ion-radio>
-              </ion-col>
+          <ion-segment-button value="MISS">
+            <ion-label>MISS</ion-label>
+          </ion-segment-button>
 
-              <ion-col>
-                <ion-label>MS</ion-label>
-                <ion-radio value="ms"></ion-radio>
-              </ion-col>
+          <ion-segment-button value="MASTER">
+            <ion-label>MASTER</ion-label>
+          </ion-segment-button>
 
-              <ion-col>
-                <ion-label>MISS</ion-label>
-                <ion-radio value="miss"></ion-radio>
-              </ion-col>
+          <ion-segment-button value="DR">
+            <ion-label>DR</ion-label>
+          </ion-segment-button>
 
-              <ion-col>
-                <ion-label>MASTER</ion-label>
-                <ion-radio value="master"></ion-radio>
-              </ion-col>
+          <ion-segment-button value="MR">
+            <ion-label>MRS</ion-label>
+          </ion-segment-button>
 
-              <ion-col>
-                <ion-label>DR</ion-label>
-                <ion-radio value="dr"></ion-radio>
-              </ion-col>
+          <ion-segment-button value="PROF">
+            <ion-label>PROF</ion-label>
+          </ion-segment-button>
 
-              <ion-col>
-                <ion-label>PROF</ion-label>
-                <ion-radio value="prof"></ion-radio>
-              </ion-col>
+          <ion-segment-button value="REV">
+            <ion-label>REV</ion-label>
+          </ion-segment-button>
 
-              <ion-col>
-                <ion-label>REV</ion-label>
-                <ion-radio value="rev"></ion-radio>
-              </ion-col>
-
-              <ion-col>
-                <ion-label>DS</ion-label>
-                <ion-radio value="ds"></ion-radio>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-        </ion-radio-group>
-        <span class="error-message" *ngIf=" ionicForm.get('title')?.touched && controls['title'].errors?.['required']"> Title is required. </span>
+          <ion-segment-button value="DS">
+            <ion-label>DS</ion-label>
+          </ion-segment-button>
+        </ion-segment>
       </ion-item>
 
       <ion-item lines="full">
         <ion-label position="floating">Initials</ion-label>
         <ion-input formControlName="initials" type="text" required></ion-input>
-        <span class="error-message" *ngIf=" ionicForm.get('initials')?.touched && controls['initials'].errors?.['required']">
+        <span class="error-message" *ngIf=" controls['initials']?.touched && controls['initials'].errors?.['required']">
           Initial(s) is/are required.
         </span>
       </ion-item>
@@ -76,10 +59,10 @@
       <ion-item lines="full">
         <ion-label position="floating">Fist Name(s)</ion-label>
         <ion-input formControlName="firstName" type="text" required></ion-input>
-        <span class="error-message" *ngIf=" ionicForm.get('firstName')?.touched && controls['firstName'].errors?.['required']">
+        <span class="error-message" *ngIf=" controls['firstName']?.touched && controls['firstName'].errors?.['required']">
           Fist Name(s) is/are required.
         </span>
-        <span class="error-message" *ngIf=" ionicForm.get('firstName')?.touched && controls['firstName'].errors?.['minlength'] ">
+        <span class="error-message" *ngIf=" controls['firstName']?.touched && controls['firstName'].errors?.['minlength'] ">
           Fist Name should be min 2 chars long.
         </span>
       </ion-item>
@@ -87,71 +70,55 @@
       <ion-item lines="full">
         <ion-label position="floating">Surname</ion-label>
         <ion-input formControlName="surname" type="text" required></ion-input>
-        <span class="error-message" *ngIf=" ionicForm.get('surname')?.touched && controls['surname'].errors?.['required']">
-          Surname is required.
-        </span>
-        <span class="error-message" *ngIf=" ionicForm.get('surname')?.touched && controls['surname'].errors?.['minlength'] ">
+        <span class="error-message" *ngIf=" controls['surname']?.touched && controls['surname'].errors?.['required']"> Surname is required. </span>
+        <span class="error-message" *ngIf=" controls['surname']?.touched && controls['surname'].errors?.['minlength'] ">
           Surname should be min 2 chars long.
         </span>
       </ion-item>
 
-      <ion-item lines="full">
-        <ion-list>
-          <ion-radio-group formControlName="idType">
-            <ion-list-header>
-              <ion-label>IdTypes</ion-label>
-            </ion-list-header>
-
-            <ion-grid>
-              <ion-row>
-                <ion-col>
-                  <ion-label>RSA</ion-label>
-                  <ion-radio value="0"></ion-radio>
-                </ion-col>
-
-                <ion-col>
-                  <ion-label>Passport</ion-label>
-                  <ion-radio value="1"></ion-radio>
-                </ion-col>
-
-                <ion-col>
-                  <ion-label>DOB/Other</ion-label>
-                  <ion-radio value="2"></ion-radio>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-          </ion-radio-group>
-        </ion-list>
-        <span class="error-message" *ngIf=" ionicForm.get('idType')?.touched && controls['idType'].errors?.['required']"> IdType is required. </span>
-      </ion-item>
+      <ion-title position="floating">Id Type</ion-title>
+      <ion-segment formControlName="idType" scrollable="true">
+        <ion-segment-button value="0">
+          <ion-label>RSA ID</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="1">
+          <ion-label>Passport</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="2">
+          <ion-label>DOB/Other</ion-label>
+        </ion-segment-button></ion-segment
+      >
 
       <ion-item lines="full">
         <ion-label position="floating">Identification Number</ion-label>
         <ion-input formControlName="idNumber" type="text" required></ion-input>
-        <span class="error-message" *ngIf=" ionicForm.get('idNumber')?.touched && controls['idNumber'].errors?.['required']">
+        <span class="error-message" *ngIf=" controls['idNumber']?.touched && controls['idNumber'].errors?.['required']">
           Identification Number is required.
         </span>
         <span
           class="error-message"
-          *ngIf="controls['idNumber'].errors?.['minlength'] || ionicForm.get('idNumber')?.dirty  && ionicForm.get('idNumber')?.touched && controls['idNumber'].errors?.['minlength']">
-          Identification Number should be min 10 chars long.
+          *ngIf="controls['idNumber'].errors?.['minlength'] || controls['idNumber']?.dirty  && controls['idNumber']?.touched && controls['idNumber'].errors?.['minlength']">
+          Identification Number should be min 13 chars long.
         </span>
       </ion-item>
 
       <ion-item>
-        <ion-label>Pick date</ion-label>
-        <ion-input type="date" value="{{ defaultDate | date: 'dd.MM.yyyy' }}"></ion-input>
+        <ion-label>Date of Birth </ion-label>
+        <ion-input formControlName="dateOfBirth" type="date"></ion-input>
+        <span class="error-message" *ngIf=" controls['dateOfBirth'].touched && controls['dateOfBirth'].errors?.['required']">
+          Date of Birth is required.
+        </span>
       </ion-item>
 
       <ion-item lines="full">
         <ion-label position="floating">Cell Number</ion-label>
         <ion-input formControlName="cellNumber" type="text" required></ion-input>
-        <span class="error-message" *ngIf=" ionicForm.get('cellNumber')?.touched && controls['cellNumber'].errors?.['required']">
+        <span class="error-message" *ngIf=" controls['cellNumber'].touched && controls['cellNumber'].errors?.['required']">
           Cell Number is required.
         </span>
         <span
           class="error-message"
-          *ngIf=" ionicForm.get('cellNumber')?.dirty  && ionicForm.get('cellNumber')?.touched && controls['cellNumber'].errors?.['minlength'] ">
+          *ngIf=" ionicForm.get('cellNumber')?.dirty  && controls['cellNumber'].touched && controls['cellNumber'].errors?.['minlength'] ">
           Cell Number should be min 10 chars long.
         </span>
       </ion-item>
@@ -159,16 +126,12 @@
       <ion-item lines="full">
         <ion-label position="floating">Email</ion-label>
         <ion-input formControlName="email" type="email"></ion-input>
+        <span class="error-message" *ngIf=" controls['email'].errors?.['pattern'] "> Email not valid. </span>
       </ion-item>
 
-      <ion-row>
-        <ion-col>
-          <ion-button expand="round" type="submit" [disabled]="!ionicForm.valid" color="danger" expand="block">Submit</ion-button>
-        </ion-col>
-        <ion-col>
-          <!-- <ion-button class="button button-block button-light" type="reset" color="danger" expand="block" clearInput>Reset Form</ion-button>-->
-        </ion-col>
-      </ion-row>
+      <ion-col>
+        <ion-button type="submit" [disabled]="!ionicForm.valid" color="danger" expand="block">Submit</ion-button>
+      </ion-col>
     </form>
-  </ion-list>
+  </ion-card>
 </ion-content>
