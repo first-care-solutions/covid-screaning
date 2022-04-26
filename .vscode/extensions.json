@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "steoates.autoimport",
+    "ecmel.vscode-html-css",
+    "Angular.ng-template",
+    "streetsidesoftware.code-spell-checker",
+    "oderwat.indent-rainbow"
+  ],
+  "unwantedRecommendations": []
+}
