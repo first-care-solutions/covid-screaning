@@ -76,18 +76,12 @@
         </span>
       </ion-item>
 
-      <ion-title position="floating">Id Type</ion-title>
-      <ion-segment formControlName="idType" scrollable="true">
-        <ion-segment-button value="0">
-          <ion-label>RSA ID</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="1">
-          <ion-label>Passport</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="2">
-          <ion-label>DOB/Other</ion-label>
-        </ion-segment-button></ion-segment
-      >
+      <ion-item>
+        <ion-label>Id Type</ion-label>
+        <ion-select>
+          <ion-select-option *ngFor="let idType of idTypes" [value]="idType">{{ idType }}</ion-select-option>
+        </ion-select>
+      </ion-item>
 
       <ion-item lines="full">
         <ion-label position="floating">Identification Number</ion-label>
@@ -104,7 +98,7 @@
 
       <ion-item>
         <ion-label>Date of Birth </ion-label>
-        <ion-input formControlName="dateOfBirth" type="date"></ion-input>
+        <ion-input formControlName="dateOfBirth" type="date" required></ion-input>
         <span class="error-message" *ngIf=" controls['dateOfBirth'].touched && controls['dateOfBirth'].errors?.['required']">
           Date of Birth is required.
         </span>

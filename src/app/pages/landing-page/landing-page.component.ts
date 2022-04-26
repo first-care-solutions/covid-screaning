@@ -15,6 +15,8 @@ export class LandingPageComponent implements OnInit {
 
   constructor(public formBuilder: FormBuilder, public toastCtrl: ToastController, public modalController: ModalController, private router: Router) {}
 
+  idTypes: string[] = ['RSAID', 'Passport', 'DOB/Other'];
+
   ngOnInit() {
     this.ionicForm = this.formBuilder.group({
       title: ['', [Validators.required]],
@@ -23,7 +25,7 @@ export class LandingPageComponent implements OnInit {
       surname: ['', [Validators.required, Validators.minLength(2)]],
       idType: ['', [Validators.required]],
       idNumber: ['', [Validators.required, Validators.minLength(13)]],
-      dateOfBirth: [Validators.required],
+      dateOfBirth: ['', [Validators.required]],
       email: ['', [Validators.pattern(this.emailPattern)]],
       cellNumber: ['', [Validators.required, Validators.minLength(10)]],
     });
