@@ -7,45 +7,14 @@
 <ion-content>
   <ion-card>
     <form [formGroup]="ionicForm" (ngSubmit)="submitForm()">
-      <ion-title position="floating">Title</ion-title>
       <ion-item>
-        <ion-segment formControlName="title" scrollable="true">
-          <ion-segment-button value="MR">
-            <ion-label>MR</ion-label>
-          </ion-segment-button>
-
-          <ion-segment-button value="MRS">
-            <ion-label>MRS</ion-label>
-          </ion-segment-button>
-
-          <ion-segment-button value="MISS">
-            <ion-label>MISS</ion-label>
-          </ion-segment-button>
-
-          <ion-segment-button value="MASTER">
-            <ion-label>MASTER</ion-label>
-          </ion-segment-button>
-
-          <ion-segment-button value="DR">
-            <ion-label>DR</ion-label>
-          </ion-segment-button>
-
-          <ion-segment-button value="MR">
-            <ion-label>MRS</ion-label>
-          </ion-segment-button>
-
-          <ion-segment-button value="PROF">
-            <ion-label>PROF</ion-label>
-          </ion-segment-button>
-
-          <ion-segment-button value="REV">
-            <ion-label>REV</ion-label>
-          </ion-segment-button>
-
-          <ion-segment-button value="DS">
-            <ion-label>DS</ion-label>
-          </ion-segment-button>
-        </ion-segment>
+        <ion-label>Title</ion-label>
+        <ion-select formControlName="title" required>
+          <ion-select-option *ngFor="let title of titles" [value]="title">{{ title }}</ion-select-option>
+        </ion-select>
+        <span class="error-message" *ngIf="controls['title']?.dirty  && controls['title']?.touched && controls['title'].errors?.['required']">
+          Title is required.
+        </span>
       </ion-item>
 
       <ion-item lines="full">
@@ -95,7 +64,7 @@
         <span
           class="error-message"
           *ngIf="controls['idNumber'].errors?.['minlength'] || controls['idNumber']?.dirty  && controls['idNumber']?.touched && controls['idNumber'].errors?.['minlength']">
-          Identification Number should be min 13 chars long.
+          Identification Number should be min 13 chars long for RSA resident.
         </span>
       </ion-item>
 
@@ -115,8 +84,8 @@
         </span>
         <span
           class="error-message"
-          *ngIf=" ionicForm.get('cellNumber')?.dirty  && controls['cellNumber'].touched && controls['cellNumber'].errors?.['minlength'] ">
-          Cell Number should be min 10 chars long.
+          *ngIf="controls['cellNumber'].errors?.['minlength'] || controls['cellNumber']?.dirty  && controls['cellNumber']?.touched && controls['idNumber'].errors?.['minlength']">
+          Cell Number should be min 10 chars long. without country code.
         </span>
       </ion-item>
 
