@@ -78,9 +78,12 @@
 
       <ion-item>
         <ion-label>Id Type</ion-label>
-        <ion-select>
+        <ion-select formControlName="idType" required>
           <ion-select-option *ngFor="let idType of idTypes" [value]="idType">{{ idType }}</ion-select-option>
         </ion-select>
+        <span class="error-message" *ngIf="controls['idType']?.dirty  && controls['idType']?.touched && controls['idType'].errors?.['required']">
+          Id Type is required.
+        </span>
       </ion-item>
 
       <ion-item lines="full">
