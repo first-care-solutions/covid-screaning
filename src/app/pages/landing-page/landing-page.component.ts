@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ModalController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-landing-page',
@@ -13,12 +13,19 @@ export class LandingPageComponent implements OnInit {
   ionicForm: FormGroup;
   emailPattern = '^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$';
 
-  constructor(
-    public formBuilder: FormBuilder,
-    public alertController: AlertController,
-    public modalController: ModalController,
-    private router: Router
-  ) {}
+  constructor(public formBuilder: FormBuilder, public alertController: AlertController, private router: Router, private http: HttpClient) {
+    this.ionicForm = this.formBuilder.group({
+      title: [''],
+      initials: [''],
+      firstName: [''],
+      surname: [''],
+      idType: [''],
+      idNumber: [''],
+      dateOfBirth: [''],
+      email: [''],
+      cellNumber: [''],
+    });
+  }
 
   titles: string[] = ['MR', 'MRS', 'MISS', 'MASTER', 'DR', 'PROF', 'REV', 'DS'];
 
@@ -48,8 +55,23 @@ export class LandingPageComponent implements OnInit {
       return false;
     } else {
       console.log(this.ionicForm.value);
-      this.router.navigate(['/pages/virtual-room']);
-      return true;
+
+      var formData: any = new FormData();
+      formData.append('title', this.ionicForm.value.title);
+      formData.append('initials', this.ionicForm.value.initials);
+      formData.append('firstName', this.ionicForm.value.firstName);
+      formData.append('surname', this.ionicForm.value.surname);
+      formData.append('idType', this.ionicForm.value.idType);
+      formData.append('idNumber', this.ionicForm.value.idNumber);
+      formData.append('dateOfBirth', this.ionicForm.value.dateOfBirth);
+      formData.append('email', this.ionicForm.value.email);
+      formData.append('cellNumber', this.ionicForm.value.cellNumber);
+
+      this.http.post('https://care-first.co.za/api/booking', formData).subscribe({
+        next: (response) => console.log(response),
+        error: (error) => console.log(error),
+      });
+      return this.router.navigate(['/pages/virtual-room']);
     }
   }
 
@@ -62,7 +84,9 @@ export class LandingPageComponent implements OnInit {
           text: 'Cancel',
           role: 'cancel',
           cssClass: 'secondary',
-          handler: () => {},
+          handler: () => {
+            return this.ionicForm.reset();
+          },
         },
         {
           text: 'Yes',
