@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ToastController } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-landing-page',
@@ -13,7 +13,12 @@ export class LandingPageComponent implements OnInit {
   ionicForm: FormGroup;
   emailPattern = '^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$';
 
-  constructor(public formBuilder: FormBuilder, public toastCtrl: ToastController, public modalController: ModalController, private router: Router) {}
+  constructor(
+    public formBuilder: FormBuilder,
+    public alertController: AlertController,
+    public modalController: ModalController,
+    private router: Router
+  ) {}
 
   titles: string[] = ['MR', 'MRS', 'MISS', 'MASTER', 'DR', 'PROF', 'REV', 'DS'];
 
@@ -46,5 +51,30 @@ export class LandingPageComponent implements OnInit {
       this.router.navigate(['/pages/virtual-room']);
       return true;
     }
+  }
+
+  async presentAlertReset() {
+    const alert = await this.alertController.create({
+      header: 'Reset Popup!',
+      message: '<strong>Are you sure you wish to clear the information on the form?</strong>!!!',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {},
+        },
+        {
+          text: 'Yes',
+          handler: () => {
+            return this.ionicForm.reset();
+          },
+        },
+      ],
+    });
+
+    await alert.present();
+    let result = await alert.onDidDismiss();
+    console.log(result);
   }
 }
