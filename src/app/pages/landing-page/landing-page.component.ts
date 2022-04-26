@@ -15,6 +15,8 @@ export class LandingPageComponent implements OnInit {
 
   constructor(public formBuilder: FormBuilder, public toastCtrl: ToastController, public modalController: ModalController, private router: Router) {}
 
+  titles: string[] = ['MR', 'MRS', 'MISS', 'MASTER', 'DR', 'PROF', 'REV', 'DS'];
+
   idTypes: string[] = ['RSAID', 'Passport', 'DOB/Other'];
 
   ngOnInit() {
