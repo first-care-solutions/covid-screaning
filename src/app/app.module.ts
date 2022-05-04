@@ -14,7 +14,12 @@ import { AppRoutingModule } from './app-routing.module';
   declarations: [AppComponent, LandingPageComponent],
   entryComponents: [],
   imports: [BrowserModule, HttpClientModule, IonicModule.forRoot(), CommonModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [
+    {
+      provide: RouteReuseStrategy,
+      useClass: IonicRouteStrategy,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

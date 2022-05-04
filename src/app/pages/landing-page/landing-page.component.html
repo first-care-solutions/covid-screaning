@@ -85,7 +85,7 @@
         <span
           class="error-message"
           *ngIf="controls['cellNumber'].errors?.['minlength'] || controls['cellNumber']?.dirty  && controls['cellNumber']?.touched && controls['idNumber'].errors?.['minlength']">
-          Cell Number should be min 10 chars long. without country code.
+          Cell Number should be min 10 chars long without country code.
         </span>
       </ion-item>
 
@@ -100,7 +100,7 @@
       </ion-col>
 
       <ion-col>
-        <ion-button color="danger" (click)="presentAlertReset()">Reset</ion-button>
+        <ion-button color="danger" (click)="ResetPopup()">Reset</ion-button>
       </ion-col>
       <ion-col>
         <ion-button color="success" type="submit">save & Connect</ion-button>
