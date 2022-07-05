@@ -10,7 +10,6 @@
       },
       "extends": [
         "plugin:@angular-eslint/recommended",
-        "@typescript-eslint/parser",
         "plugin:@angular-eslint/ng-cli-compat",
         "plugin:@angular-eslint/ng-cli-compat--formatting-add-on",
         "plugin:@angular-eslint/template/process-inline-templates"
@@ -37,7 +36,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "hub",
+            "prefix": "app",
             "style": "kebab-case"
           }
         ],
@@ -45,7 +44,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "hub",
+            "prefix": "app",
             "style": "camelCase"
           }
         ]
