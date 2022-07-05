@@ -5,8 +5,8 @@ import { VirtualRoomComponent } from './pages/virtual-room/virtual-room.componen
 
 const routes: Routes = [
   { path: '', redirectTo: 'pages/landing', pathMatch: 'full' },
-  { path: 'pages/landing', component: LandingPageComponent },
   { path: 'home', redirectTo: 'pages/landing', pathMatch: 'full' },
+  { path: 'pages/landing', component: LandingPageComponent },
   { path: 'pages/virtual-room', component: VirtualRoomComponent },
   { path: 'virtual-room', redirectTo: 'pages/virtual-room', pathMatch: 'full' },
   { path: '**', redirectTo: 'pages/landing', pathMatch: 'full' },
