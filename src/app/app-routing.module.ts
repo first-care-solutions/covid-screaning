@@ -3,10 +3,10 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 
 const routes: Routes = [
-  { path: '', component: LandingPageComponent },
+  { path: '', redirectTo: 'pages/landing', pathMatch: 'full' },
   { path: 'pages/landing', component: LandingPageComponent },
-  { path: 'home', component: LandingPageComponent },
-  { path: '**', component: LandingPageComponent },
+  { path: 'home', redirectTo: 'pages/landing', pathMatch: 'full' },
+  { path: '**', redirectTo: 'pages/landing', pathMatch: 'full' },
 ];
 
 @NgModule({
