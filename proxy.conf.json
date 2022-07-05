@@ -1,0 +1,6 @@
+{
+  "/api": {
+    "target": "https://care-first.co.za",
+    "secure": false
+  }
+}
