@@ -41,7 +41,7 @@ export class LandingPageComponent {
       initials: this.userInfoForm.value.initials,
       firstName: this.userInfoForm.value.firstName,
       surname: this.userInfoForm.value.surname,
-      idType: this.userInfoForm.value.idType,
+      idType: +this.userInfoForm.value.idType,
       idNumber: this.userInfoForm.value.idNumber,
       dateOfBirth: this.userInfoForm.value.dateOfBirth,
       cellNumber: this.userInfoForm.value.cellNumber,
