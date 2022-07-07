@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import dayjs from 'dayjs';
 
 interface UserDataI {
   title: string;
@@ -12,6 +13,7 @@ interface UserDataI {
   cellNumber: string;
   email?: string;
 }
+
 @Component({
   selector: 'app-landing-page',
   templateUrl: './landing-page.component.html',
@@ -30,8 +32,8 @@ export class LandingPageComponent {
     email: ['', Validators.email],
   });
 
-  minDate = '1950-01-01';
-  maxDate = '2010-12-31';
+  minDate = dayjs().subtract(70, 'year').format('YYYY-MM-DD');
+  maxDate = dayjs().format('YYYY-MM-DD');
 
   constructor(private formBuilder: FormBuilder) {}
 

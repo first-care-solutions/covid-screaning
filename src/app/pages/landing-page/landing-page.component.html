@@ -31,18 +31,22 @@
             <ion-label position="floating">Surname</ion-label>
             <ion-input formControlName="surname"></ion-input>
           </ion-item>
-          <ion-label>Identification Type</ion-label>
-          <ion-segment formControlName="idType">
-            <ion-segment-button value="0">
-              <ion-label>RSA</ion-label>
-            </ion-segment-button>
-            <ion-segment-button value="1">
-              <ion-label>Passport</ion-label>
-            </ion-segment-button>
-            <ion-segment-button value="2">
-              <ion-label>DOB/Other</ion-label>
-            </ion-segment-button>
-          </ion-segment>
+          <ion-item lines="none">
+            <ion-label>Identification Type</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-segment formControlName="idType">
+              <ion-segment-button value="0">
+                <ion-label>RSA</ion-label>
+              </ion-segment-button>
+              <ion-segment-button value="1">
+                <ion-label>Passport</ion-label>
+              </ion-segment-button>
+              <ion-segment-button value="2">
+                <ion-label>DOB/Other</ion-label>
+              </ion-segment-button>
+            </ion-segment>
+          </ion-item>
           <ion-item>
             <ion-label position="floating">Identification Number</ion-label>
             <ion-input formControlName="idNumber"></ion-input>
