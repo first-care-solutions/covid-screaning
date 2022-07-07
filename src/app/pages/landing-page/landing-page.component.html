@@ -1,3 +1,71 @@
-<p>
-  landing-page works!
-</p>
+<ion-content class="ion-page">
+  <div id="container">
+    <form [formGroup]="userInfoForm">
+      <ion-card>
+        <ion-card-title class="ion-text-center"><h3>This is my ED Greenline App</h3></ion-card-title>
+        <ion-card-content>
+          <ion-item>
+            <ion-label>Title</ion-label>
+            <ion-select interface="popover" formControlName="title">
+              <ion-select-option value="MR">MR</ion-select-option>
+              <ion-select-option value="MRS">MRS</ion-select-option>
+              <ion-select-option value="MS">MS</ion-select-option>
+              <ion-select-option value="MISS">MISS</ion-select-option>
+              <ion-select-option value="MASTER">MASTER</ion-select-option>
+              <ion-select-option value="DR">DR</ion-select-option>
+              <ion-select-option value="PROF">PROF</ion-select-option>
+              <ion-select-option value="REV">REV</ion-select-option>
+              <ion-select-option value="DS">DS</ion-select-option>
+              <ion-select-option value="null">null</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Initials</ion-label>
+            <ion-input formControlName="initials"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">First Name</ion-label>
+            <ion-input formControlName="firstName"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Surname</ion-label>
+            <ion-input formControlName="surname"></ion-input>
+          </ion-item>
+          <ion-list>
+            <ion-radio-group formControlName="idType">
+              <ion-list-header>
+                <ion-label> Identification Type </ion-label>
+              </ion-list-header>
+              <ion-item>
+                <ion-label>RSA</ion-label>
+                <ion-radio value="RSA"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>Passport</ion-label>
+                <ion-radio value="Passport"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>DOB/Other</ion-label>
+                <ion-radio value="DOB/Other"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-list>
+          <ion-item>
+            <ion-label position="floating">Identification Number</ion-label>
+            <ion-input formControlName="idNumber"></ion-input>
+          </ion-item>
+          <ion-label>Date Of Birth</ion-label>
+          <ion-datetime presentation="date" formControlName="dateOfBirth"> Date Of Birth </ion-datetime>
+          <ion-item>
+            <ion-label position="floating">Cell Number</ion-label>
+            <ion-input formControlName="cellNumber"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Email</ion-label>
+            <ion-input formControlName="email"></ion-input>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+    </form>
+  </div>
+</ion-content>
