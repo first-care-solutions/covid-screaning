@@ -1,3 +1,73 @@
-<p>
-  landing-page works!
-</p>
+<ion-content class="ion-page">
+  <div id="container">
+    <form [formGroup]="userInfoForm">
+      <ion-card>
+        <ion-card-title class="ion-text-center"><h3>This is my ED Greenline App</h3></ion-card-title>
+        <ion-card-content>
+          <ion-item>
+            <ion-label>Title</ion-label>
+            <ion-select interface="popover" formControlName="title">
+              <ion-select-option value="MR">MR</ion-select-option>
+              <ion-select-option value="MRS">MRS</ion-select-option>
+              <ion-select-option value="MS">MS</ion-select-option>
+              <ion-select-option value="MISS">MISS</ion-select-option>
+              <ion-select-option value="MASTER">MASTER</ion-select-option>
+              <ion-select-option value="DR">DR</ion-select-option>
+              <ion-select-option value="PROF">PROF</ion-select-option>
+              <ion-select-option value="REV">REV</ion-select-option>
+              <ion-select-option value="DS">DS</ion-select-option>
+              <ion-select-option value="null">null</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Initials</ion-label>
+            <ion-input formControlName="initials"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">First Name</ion-label>
+            <ion-input formControlName="firstName"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Surname</ion-label>
+            <ion-input formControlName="surname"></ion-input>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-label>Identification Type</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-segment formControlName="idType">
+              <ion-segment-button value="0">
+                <ion-label>RSA</ion-label>
+              </ion-segment-button>
+              <ion-segment-button value="1">
+                <ion-label>Passport</ion-label>
+              </ion-segment-button>
+              <ion-segment-button value="2">
+                <ion-label>DOB/Other</ion-label>
+              </ion-segment-button>
+            </ion-segment>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Identification Number</ion-label>
+            <ion-input formControlName="idNumber"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Date Of Birth</ion-label>
+            <ion-input slot="end" type="date" formControlName="dateOfBirth" [min]="minDate" [max]="maxDate" pattern="\d{4}-\d{2}-\d{2}"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Cell Number</ion-label>
+            <ion-input formControlName="cellNumber"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Email</ion-label>
+            <ion-input formControlName="email"></ion-input>
+          </ion-item>
+          <div class="ion-text-center">
+            <ion-button (click)="userInfoSubmit()" [disabled]="!userInfoForm.valid">Submit</ion-button>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </form>
+  </div>
+</ion-content>
