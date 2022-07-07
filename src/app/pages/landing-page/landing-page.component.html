@@ -31,31 +31,26 @@
             <ion-label position="floating">Surname</ion-label>
             <ion-input formControlName="surname"></ion-input>
           </ion-item>
-          <ion-list>
-            <ion-radio-group formControlName="idType">
-              <ion-list-header>
-                <ion-label> Identification Type </ion-label>
-              </ion-list-header>
-              <ion-item>
-                <ion-label>RSA</ion-label>
-                <ion-radio value="RSA"></ion-radio>
-              </ion-item>
-              <ion-item>
-                <ion-label>Passport</ion-label>
-                <ion-radio value="Passport"></ion-radio>
-              </ion-item>
-              <ion-item>
-                <ion-label>DOB/Other</ion-label>
-                <ion-radio value="DOB/Other"></ion-radio>
-              </ion-item>
-            </ion-radio-group>
-          </ion-list>
+          <ion-label>Identification Type</ion-label>
+          <ion-segment formControlName="idType">
+            <ion-segment-button value="0">
+              <ion-label>RSA</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="1">
+              <ion-label>Passport</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="2">
+              <ion-label>DOB/Other</ion-label>
+            </ion-segment-button>
+          </ion-segment>
           <ion-item>
             <ion-label position="floating">Identification Number</ion-label>
             <ion-input formControlName="idNumber"></ion-input>
           </ion-item>
-          <ion-label>Date Of Birth</ion-label>
-          <ion-datetime presentation="date" formControlName="dateOfBirth"> Date Of Birth </ion-datetime>
+          <ion-item>
+            <ion-label>Date Of Birth</ion-label>
+            <ion-input slot="end" type="date" formControlName="dateOfBirth" [min]="minDate" [max]="maxDate" pattern="\d{4}-\d{2}-\d{2}"></ion-input>
+          </ion-item>
           <ion-item>
             <ion-label position="floating">Cell Number</ion-label>
             <ion-input formControlName="cellNumber"></ion-input>
@@ -64,7 +59,9 @@
             <ion-label position="floating">Email</ion-label>
             <ion-input formControlName="email"></ion-input>
           </ion-item>
-          <ion-button (click)="userInfoSubmit()" [disabled]="!userInfoForm.valid">Submit</ion-button>
+          <div class="ion-text-center">
+            <ion-button (click)="userInfoSubmit()" [disabled]="!userInfoForm.valid">Submit</ion-button>
+          </div>
         </ion-card-content>
       </ion-card>
     </form>
