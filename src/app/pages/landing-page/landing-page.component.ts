@@ -5,18 +5,6 @@ import { ApiService } from '@services/api.service';
 import { Router } from '@angular/router';
 import dayjs from 'dayjs';
 
-export interface UserDataI {
-  title: string;
-  initials: string;
-  firstName: string;
-  surname: string;
-  idType: number;
-  idNumber: string;
-  dateOfBirth: string;
-  cellNumber: string;
-  email?: string;
-}
-
 @Component({
   selector: 'app-landing-page',
   templateUrl: './landing-page.component.html',

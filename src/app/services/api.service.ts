@@ -1,8 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { UserDataI } from '../pages/landing-page/landing-page.component';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+
+interface UserDataI {
+  title: string;
+  initials: string;
+  firstName: string;
+  surname: string;
+  idType: number;
+  idNumber: string;
+  dateOfBirth: string;
+  cellNumber: string;
+  email?: string;
+}
 
 interface APIResponseI {
   result: boolean;
