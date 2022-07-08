@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AlertController } from '@ionic/angular';
 import { ApiService } from '@services/api.service';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import dayjs from 'dayjs';
 
 export interface UserDataI {
@@ -40,8 +40,6 @@ export class LandingPageComponent {
 
   constructor(private formBuilder: FormBuilder, private alertController: AlertController, private apiService: ApiService, private router: Router) {}
 
-  userInfoSubmit() {}
-
   async showAlert() {
     await this.alertController
       .create({
@@ -61,6 +59,7 @@ export class LandingPageComponent {
       })
       .then((res) => res.present());
   }
+
   async showErrorAlert() {
     await this.alertController
       .create({
