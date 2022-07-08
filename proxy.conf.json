@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "https://care-first.co.za",
+    "target": "http://127.0.0.1:3000/api",
     "secure": false
   }
 }
