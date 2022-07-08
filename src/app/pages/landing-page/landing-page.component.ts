@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { AlertController } from '@ionic/angular';
 import dayjs from 'dayjs';
 
 interface UserDataI {
@@ -35,20 +36,27 @@ export class LandingPageComponent {
   minDate = dayjs().subtract(70, 'year').format('YYYY-MM-DD');
   maxDate = dayjs().format('YYYY-MM-DD');
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder, private alertController: AlertController) {}
 
-  userInfoSubmit() {
-    const userData: UserDataI = {
-      title: this.userInfoForm.value.title,
-      initials: this.userInfoForm.value.initials,
-      firstName: this.userInfoForm.value.firstName,
-      surname: this.userInfoForm.value.surname,
-      idType: +this.userInfoForm.value.idType,
-      idNumber: this.userInfoForm.value.idNumber,
-      dateOfBirth: this.userInfoForm.value.dateOfBirth,
-      cellNumber: this.userInfoForm.value.cellNumber,
-      email: this.userInfoForm.value.email,
-    };
-    console.log(userData);
+  userInfoSubmit() {}
+
+  async showAlert() {
+    await this.alertController
+      .create({
+        header: 'Warning',
+        message: 'Are you sure you wish to clear the information on the form?',
+        buttons: [
+          {
+            text: 'Yes',
+            handler: () => {
+              this.userInfoForm.reset();
+            },
+          },
+          {
+            text: 'Cancel',
+          },
+        ],
+      })
+      .then((res) => res.present());
   }
 }
