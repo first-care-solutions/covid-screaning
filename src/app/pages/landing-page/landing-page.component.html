@@ -64,7 +64,7 @@
             <ion-input formControlName="email"></ion-input>
           </ion-item>
           <div class="ion-text-center">
-            <ion-button [disabled]="!userInfoForm.valid">Submit</ion-button>
+            <ion-button (click)="submitData()" [disabled]="!userInfoForm.valid">Submit</ion-button>
             <ion-button (click)="showAlert()">Clear All</ion-button>
           </div>
         </ion-card-content>

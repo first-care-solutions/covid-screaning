@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AlertController } from '@ionic/angular';
+import { ApiService } from '@services/api.service';
 import dayjs from 'dayjs';
 
-interface UserDataI {
+export interface UserDataI {
   title: string;
   initials: string;
   firstName: string;
@@ -36,7 +37,7 @@ export class LandingPageComponent {
   minDate = dayjs().subtract(70, 'year').format('YYYY-MM-DD');
   maxDate = dayjs().format('YYYY-MM-DD');
 
-  constructor(private formBuilder: FormBuilder, private alertController: AlertController) {}
+  constructor(private formBuilder: FormBuilder, private alertController: AlertController, private apiService: ApiService) {}
 
   userInfoSubmit() {}
 
@@ -58,5 +59,23 @@ export class LandingPageComponent {
         ],
       })
       .then((res) => res.present());
+  }
+
+  submitData() {
+    this.apiService
+      .saveData({
+        title: this.userInfoForm.value.title,
+        initials: this.userInfoForm.value.initials,
+        firstName: this.userInfoForm.value.firstName,
+        surname: this.userInfoForm.value.surname,
+        idType: +this.userInfoForm.value.idType,
+        idNumber: this.userInfoForm.value.idNumber,
+        dateOfBirth: this.userInfoForm.value.dateOfBirth,
+        cellNumber: this.userInfoForm.value.cellNumber,
+        email: this.userInfoForm.value.email,
+      })
+      .subscribe((result) => {
+        this.userInfoForm.reset();
+      });
   }
 }
