@@ -1,0 +1,64 @@
+<ion-content>
+  <ion-app>
+    <ion-card-header>
+      <ion-card-title><b>ConsultForm</b></ion-card-title>
+    </ion-card-header>
+    <ion-list>
+      <ion-item>
+        <ion-label>Title:</ion-label>
+        <ion-list>
+          <ion-item>
+            <ion-select placeholder="Select Title">
+              <ion-select-option value="MR">MR</ion-select-option>
+              <ion-select-option value="MRS">MRS</ion-select-option>
+              <ion-select-option value="MS">MS</ion-select-option>
+              <ion-select-option value="MISS">MISS</ion-select-option>
+              <ion-select-option value="MASTER">MASTER</ion-select-option>
+              <ion-select-option value="DR">DR</ion-select-option>
+              <ion-select-option value="REV">REV</ion-select-option>
+              <ion-select-option value="DS">DS</ion-select-option>
+              <ion-select-option value="null"></ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+      </ion-item>
+      <ion-item>
+        <ion-label>Initials:</ion-label>
+        <ion-input type="string"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>First Name(s):</ion-label>
+        <ion-input type="string"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Surname:</ion-label>
+        <ion-input type="string"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Identification Type:</ion-label>
+        <ion-input type="STRING"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Identification Number:</ion-label>
+        <ion-input type="number"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Date of Birth:</ion-label>
+
+        <ion-item>
+          <ion-label>Pick date</ion-label>
+          <ion-datetime displayFormat="DD.MM.YYYY" presentation="date" [(ngModel)]="date"></ion-datetime>
+        </ion-item>
+
+        <ion-input type="string"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Cell Number:</ion-label>
+        <ion-input type="string"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Email:</ion-label>
+        <ion-input type="string"></ion-input>
+      </ion-item>
+    </ion-list> </ion-app
+></ion-content>
