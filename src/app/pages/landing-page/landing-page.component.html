@@ -1,14 +1,16 @@
-<ion-content>
+<form [formGroup]="userProfileForm" (ngSubmit)="onsubmit()">
   <ion-app>
     <ion-card-header>
-      <ion-card-title><b>ConsultForm</b></ion-card-title>
+      <ion-card-title
+        ><b>{{ header }}</b></ion-card-title
+      >
     </ion-card-header>
     <ion-list>
       <ion-item>
         <ion-label>Title:</ion-label>
         <ion-list>
           <ion-item>
-            <ion-select placeholder="Select Title">
+            <ion-select type="string" formControlName="title" placeholder="Select Title">
               <ion-select-option value="MR">MR</ion-select-option>
               <ion-select-option value="MRS">MRS</ion-select-option>
               <ion-select-option value="MS">MS</ion-select-option>
@@ -24,41 +26,53 @@
       </ion-item>
       <ion-item>
         <ion-label>Initials:</ion-label>
-        <ion-input type="string"></ion-input>
+        <ion-input type="string" formControlName="initial" placeholder="Initials Required"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label>First Name(s):</ion-label>
-        <ion-input type="string"></ion-input>
+        <ion-input placeholder="First Name Required" formControlName="firstName" type="string"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label>Surname:</ion-label>
-        <ion-input type="string"></ion-input>
+        <ion-input placeholder="Surname Required" formControlName="surname" type="string"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label>Identification Type:</ion-label>
-        <ion-input type="STRING"></ion-input>
+        <ion-input placeholder="Select ID Type" disabled="true"> </ion-input>
+        <ion-radio-group formControlName="identificationType">
+          <ion-item>
+            <ion-label>RSA ID</ion-label>
+            <ion-radio slot="end" value="RSA ID"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Passport</ion-label>
+            <ion-radio slot="end" value="Passport"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>DOB/Other</ion-label>
+            <ion-radio slot="end" value="DOB/Other"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
       </ion-item>
       <ion-item>
         <ion-label>Identification Number:</ion-label>
-        <ion-input type="number"></ion-input>
+        <ion-input placeholder="ID No. Required" formControlName="identificationNumber" type="string"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label>Date of Birth:</ion-label>
-
-        <ion-item>
-          <ion-label>Pick date</ion-label>
-          <ion-datetime displayFormat="DD.MM.YYYY" presentation="date" [(ngModel)]="date"></ion-datetime>
-        </ion-item>
-
-        <ion-input type="string"></ion-input>
+        <ion-input placeholder="DOB Required"></ion-input>
+        <input formControlName="dateOfBirth" type="date" dateFormat="YYYY-MM-DD" />
       </ion-item>
       <ion-item>
         <ion-label>Cell Number:</ion-label>
-        <ion-input type="string"></ion-input>
+        <ion-input placeholder="Contact Required" formControlName="cellNumber" type="string"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label>Email:</ion-label>
-        <ion-input type="string"></ion-input>
+        <ion-input placeholder="Email Required" formControlName="email" type="string"></ion-input>
       </ion-item>
-    </ion-list> </ion-app
-></ion-content>
+      <ion-button (click)="_alert()" shape="round">RESET</ion-button>
+      <ion-button type="submit" shape="round">Save and Connect</ion-button>
+    </ion-list>
+  </ion-app>
+</form>
