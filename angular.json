@@ -80,9 +80,7 @@
             "production": {
               "browserTarget": "app:build:production"
             },
-            "ci": {
-              "progress": false
-            }
+            "ci": {}
           }
         },
         "extract-i18n": {
@@ -145,6 +143,7 @@
     }
   },
   "cli": {
+    "analytics": false,
     "defaultCollection": "@ionic/angular-toolkit"
   },
   "schematics": {
